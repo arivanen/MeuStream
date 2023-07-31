@@ -1,12 +1,19 @@
 package br.com.alura.MeuStream.modelos;
 
-public abstract class Titulo {
+public class Titulo implements Comparable<Titulo> {
     private String nome;
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
     private double somaAvaliacao;
     private int totalDeAvaliacao;
     private int duracaoEmMinutos;
+
+    public Titulo(String nome, int anoDeLancamento) {
+        this.nome = nome;
+        this.anoDeLancamento = anoDeLancamento;
+    }
+
+    public String getNome() {return nome;}
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -46,6 +53,11 @@ public abstract class Titulo {
 
     public int getDuracaoEmMinutos() {return duracaoEmMinutos;}
 
+    public int getAnoDeLancamento() {return anoDeLancamento;}
 
 
+    @Override
+    public int compareTo(Titulo outroTitulo) {
+        return this.getNome().compareTo(outroTitulo.getNome());
+    }
 }
